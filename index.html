@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#080F2D" />
+  <meta name="description" content="A divine cinematic Raksha Bandhan story — from Krishna & Draupadi to a brother and his forever sister." />
+  <title>Our Sacred Story — Happy Raksha Bandhan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-story">Skip to story</a>
+
+  <button type="button" id="music-toggle" class="music-toggle" aria-label="Toggle music" hidden>
+    <span aria-hidden="true">♪</span>
+  </button>
+
+  <nav class="chapter-rail" id="chapter-rail" aria-label="Story chapters" hidden>
+    <ol id="chapter-list"></ol>
+  </nav>
+  <div class="chapter-bar" id="chapter-bar" aria-hidden="true" hidden></div>
+
+  <!-- ===================== DIVINE OPENING ===================== -->
+  <section class="opening" id="opening" aria-label="Divine opening">
+    <canvas class="sky-canvas" id="opening-stars" aria-hidden="true"></canvas>
+    <div class="divine-rays" aria-hidden="true"></div>
+    <div class="golden-dust" id="opening-dust" aria-hidden="true"></div>
+    <div class="opening__ornament opening__ornament--tl" aria-hidden="true"></div>
+    <div class="opening__ornament opening__ornament--tr" aria-hidden="true"></div>
+    <div class="opening__ornament opening__ornament--bl" aria-hidden="true"></div>
+    <div class="opening__ornament opening__ornament--br" aria-hidden="true"></div>
+
+    <div class="opening__stage">
+      <!-- Full divine scene: Krishna left · empty center · Draupadi right (never cropped) -->
+      <div class="opening__scene" id="opening-scene" aria-hidden="true">
+        <img
+          class="opening__scene-img"
+          src="assets/divine/opening-scene.png"
+          alt=""
+          decoding="async"
+        />
+      </div>
+
+      <div class="opening__center">
+        <div class="opening__words">
+          <p class="opening__line" data-open="0">Some bonds are older than time.</p>
+          <p class="opening__line" data-open="1">Some promises are forever.</p>
+          <p class="opening__line opening__line--title" data-open="2">Happy Raksha Bandhan</p>
+          <p class="opening__line opening__line--name" data-open="3">My Dear Chittu <span aria-hidden="true">❤️</span></p>
+          <p class="opening__line opening__line--note" data-open="4">
+            A thread of love, a promise of protection,<br />
+            a bond that connects two hearts forever.
+          </p>
+
+          <div class="opening__actions" data-open="5">
+            <button type="button" class="btn btn--music" id="enable-music">
+              <span aria-hidden="true">🎵</span> Turn on the music
+            </button>
+            <button type="button" class="btn btn--seal" id="enter-story">
+              Begin Our Story <span aria-hidden="true">❤️</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opening__transition" id="opening-transition" aria-hidden="true"></div>
+  </section>
+
+  <!-- ===================== MAIN STORY ===================== -->
+  <main id="main-story" class="story" hidden>
+
+    <!-- 01 Divine Bond -->
+    <section class="chapter chapter--myth" id="ch-divine" data-chapter="divine">
+      <div class="chapter__inner">
+        <p class="chapter__num reveal">01 — Divine Bond</p>
+        <h2 class="chapter__title reveal">A Bond Written in Time</h2>
+
+        <figure class="myth-art reveal" data-media="divine-story">
+          <img src="assets/divine/krishna-draupadi.png" alt="Krishna and Draupadi" loading="lazy" />
+        </figure>
+
+        <div class="story-lines">
+          <p class="story-line reveal">One of the most beloved stories associated with the spirit of Raksha Bandhan is the bond between Krishna and Draupadi.</p>
+          <p class="story-line reveal">In the stories passed down through generations, they shared a bond that went beyond ordinary friendship.</p>
+          <p class="story-line reveal">When Draupadi needed Krishna...</p>
+          <p class="story-line story-line--gold reveal">Krishna stood beside her.</p>
+          <p class="story-line reveal">And when Krishna needed love...</p>
+          <p class="story-line reveal">Draupadi's affection reminded us that protection is never only about strength.</p>
+          <p class="story-line story-line--emphasis reveal">It is about being there.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divine Promise -->
+    <section class="chapter chapter--promise-divine" id="ch-promise-divine" data-chapter="promise-divine">
+      <canvas class="sky-canvas" id="promise-stars" aria-hidden="true"></canvas>
+      <div class="chapter__inner chapter__inner--narrow">
+        <div class="promise-glow" aria-hidden="true"></div>
+        <p class="story-line reveal">A brother's promise is not simply...</p>
+        <p class="story-line story-line--soft reveal">"I will protect you."</p>
+        <p class="story-line reveal">It is...</p>
+        <h2 class="promise-big reveal">"I will stand beside you."</h2>
+        <p class="story-line story-line--gold reveal">Through every chapter.</p>
+      </div>
+    </section>
+
+    <!-- Transition: Myth → Us -->
+    <section class="chapter chapter--bridge" id="ch-bridge" data-chapter="bridge">
+      <div class="particle-burst" id="bridge-particles" aria-hidden="true"></div>
+      <div class="chapter__inner">
+        <figure class="bridge-photo reveal" data-media="bridge-photo">
+          <div class="bridge-photo__frame">
+            <img src="" alt="Our first memory together" loading="lazy" />
+            <div class="bridge-photo__grain" aria-hidden="true"></div>
+          </div>
+        </figure>
+        <div class="story-lines story-lines--center">
+          <p class="story-line reveal">Thousands of years may separate our stories...</p>
+          <p class="story-line reveal">But the feeling hasn't changed.</p>
+          <h2 class="chapter__title chapter__title--gold reveal">Today, that story is ours.</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 Our Beginning -->
+    <section class="chapter chapter--us" id="ch-us" data-chapter="us">
+      <div class="chapter__inner">
+        <p class="chapter__num reveal">02 — Our Beginning</p>
+        <h2 class="chapter__title reveal">And then there was us.</h2>
+        <p class="story-line reveal">We didn't know it back then...</p>
+        <p class="story-line reveal">But we were creating memories.</p>
+        <div class="polaroid-rail" id="childhood-rail" role="list"></div>
+        <p class="chapter__hint reveal">Swipe through our beginning →</p>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="chapter chapter--timeline" id="ch-timeline" data-chapter="timeline">
+      <div class="chapter__inner">
+        <p class="chapter__num reveal">03 — Growing Up</p>
+        <h2 class="chapter__title reveal">The years between then and now</h2>
+        <div class="life-timeline" id="life-timeline"></div>
+      </div>
+    </section>
+
+    <!-- Funny -->
+    <section class="chapter chapter--funny" id="ch-funny" data-chapter="funny">
+      <div class="chapter__inner">
+        <h2 class="chapter__title reveal">Of course... we also fought.</h2>
+        <div class="funny-lines">
+          <p class="funny-line reveal">Arguments.</p>
+          <p class="funny-line reveal">Complaints.</p>
+          <p class="funny-line reveal">Blaming each other.</p>
+          <p class="funny-line reveal">Annoying each other for absolutely no reason.</p>
+          <p class="funny-line funny-line--soft reveal">But somehow...</p>
+          <p class="funny-line funny-line--big reveal">Nobody else was allowed to annoy you.</p>
+          <p class="funny-line reveal" aria-hidden="true">😂❤️</p>
+        </div>
+        <div class="funny-gallery" id="funny-gallery"></div>
+      </div>
+    </section>
+
+    <!-- Videos (4 clips) -->
+    <section class="chapter chapter--videos" id="ch-videos" data-chapter="videos">
+      <div class="chapter__inner chapter__inner--wide">
+        <p class="chapter__num reveal">04 — Our Videos</p>
+        <h2 class="chapter__title reveal">Some memories deserve to move.</h2>
+        <p class="story-line reveal">Some moments are better experienced than explained.</p>
+        <div class="video-grid" id="video-grid"></div>
+        <p class="chapter__quote reveal">I could watch these moments a thousand times.</p>
+      </div>
+    </section>
+
+    <!-- Memories -->
+    <section class="chapter chapter--memories" id="ch-memories" data-chapter="memories">
+      <div class="chapter__inner chapter__inner--wide">
+        <p class="chapter__num reveal">05 — Memories</p>
+        <h2 class="chapter__title reveal">A constellation of us</h2>
+        <div class="memory-constellation" id="memory-gallery"></div>
+      </div>
+    </section>
+
+    <!-- Time changed -->
+    <section class="chapter chapter--time" id="ch-time" data-chapter="time">
+      <div class="chapter__inner chapter__inner--narrow">
+        <h2 class="chapter__title reveal">Time changed everything</h2>
+        <div class="story-lines story-lines--center">
+          <p class="story-line reveal">We grew up.</p>
+          <p class="story-line reveal">Life became different.</p>
+          <p class="story-line reveal">Responsibilities came.</p>
+          <p class="story-line reveal">Distance sometimes came.</p>
+          <p class="story-line reveal">Time moved faster.</p>
+          <p class="story-line story-line--soft reveal">But...</p>
+          <h2 class="promise-big reveal">You were still my sister.</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divine Connection split -->
+    <section class="chapter chapter--connection" id="ch-connection" data-chapter="connection">
+      <div class="chapter__inner">
+        <div class="story-lines story-lines--center">
+          <p class="story-line reveal">Their story belongs to another time.</p>
+          <p class="story-line reveal">Ours belongs to this one.</p>
+          <p class="story-line reveal">But the meaning is the same.</p>
+          <p class="story-line story-line--gold reveal">A brother's love.</p>
+          <p class="story-line story-line--gold reveal">A sister's trust.</p>
+          <h2 class="chapter__title chapter__title--gold reveal">A bond that time cannot erase.</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 My Promise -->
+    <section class="chapter chapter--vow" id="ch-vow" data-chapter="vow">
+      <canvas class="sky-canvas sky-canvas--subtle" id="vow-stars" aria-hidden="true"></canvas>
+      <div class="chapter__inner chapter__inner--narrow">
+        <p class="chapter__num reveal">06 — My Promise</p>
+        <div class="vow-lines" id="vow-lines">
+          <p class="vow-line" data-step="0">I may not always say it.</p>
+          <p class="vow-line" data-step="1">I may annoy you.</p>
+          <p class="vow-line" data-step="2">I may fight with you.</p>
+          <p class="vow-line" data-step="3">I may not always know the right thing to say.</p>
+          <p class="vow-line vow-line--big" data-step="4">But I will always be your brother.</p>
+          <p class="vow-line" data-step="5">Whenever you need me.</p>
+          <p class="vow-line" data-step="6">Wherever life takes you.</p>
+          <p class="vow-line" data-step="7">Whatever happens.</p>
+          <p class="vow-line vow-line--gold" data-step="8">I'll be there.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Letter -->
+    <section class="chapter chapter--letter" id="ch-letter" data-chapter="letter">
+      <div class="chapter__inner">
+        <h2 class="chapter__title reveal">A letter from your brother</h2>
+        <article class="parchment reveal" aria-label="Personal letter">
+          <div class="parchment__seal" aria-hidden="true"></div>
+          <div class="parchment__body" id="letter-body"></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 06 Rakhi -->
+    <section class="chapter chapter--rakhi" id="ch-rakhi" data-chapter="rakhi">
+      <div class="rakhi-stage" aria-hidden="true">
+        <div class="rakhi-aura"></div>
+        <div class="rakhi-thread"></div>
+        <div class="rakhi-ornament">
+          <div class="rakhi-center"></div>
+          <div class="rakhi-beads"></div>
+        </div>
+        <div class="rakhi-petals" id="rakhi-petals"></div>
+      </div>
+      <div class="chapter__inner chapter__inner--narrow">
+        <p class="chapter__num reveal">07 — Raksha Bandhan</p>
+        <p class="story-line reveal">A thread may look small...</p>
+        <p class="story-line reveal">But what it represents can last a lifetime.</p>
+        <p class="rakhi-word reveal">Protection.</p>
+        <p class="rakhi-word reveal">Trust.</p>
+        <p class="rakhi-word reveal">Love.</p>
+        <h2 class="rakhi-word rakhi-word--finale reveal">Family.</h2>
+      </div>
+    </section>
+
+    <!-- Forever -->
+    <section class="chapter chapter--finale" id="ch-finale" data-chapter="finale">
+      <canvas class="sky-canvas" id="finale-stars" aria-hidden="true"></canvas>
+      <div class="golden-dust" id="finale-dust" aria-hidden="true"></div>
+      <div class="finale-divine" aria-hidden="true">
+        <img src="assets/divine/krishna-draupadi.png" alt="" loading="lazy" />
+      </div>
+
+      <div class="chapter__inner chapter__inner--finale">
+        <p class="chapter__num reveal">08 — Forever</p>
+        <p class="story-line reveal">From their story...</p>
+        <p class="story-line reveal">...to ours.</p>
+
+        <div class="finale-media reveal">
+          <div class="cine-video cine-video--finale" data-media="finale-main-video" id="finale-main-video-wrap">
+            <video id="finale-main-video" controls playsinline preload="metadata" poster=""></video>
+            <p class="media-fallback" hidden>Add <code>assets/videos/chittu-main.mp4</code></p>
+          </div>
+
+          <div class="finale-photos" id="finale-photos" aria-label="Our forever photos"></div>
+        </div>
+
+        <h1 class="finale-title reveal">Happy Raksha Bandhan</h1>
+        <p class="finale-sub reveal">To the sister who has been part of my story from the beginning.</p>
+        <p class="finale-name reveal" id="finale-sister"></p>
+        <p class="finale-sign reveal">Always your brother,</p>
+        <p class="finale-name finale-name--brother reveal" id="finale-brother"></p>
+
+        <button type="button" class="btn btn--seal reveal" id="replay-story">Replay Our Story ↻</button>
+
+        <div class="secret reveal">
+          <p class="secret__prompt">One last secret...</p>
+          <button type="button" class="btn btn--ghost" id="last-secret">Reveal it <span aria-hidden="true">❤️</span></button>
+          <div class="secret__reveal" id="secret-reveal" hidden>
+            <p>No matter how old we get...</p>
+            <p>No matter how much we fight...</p>
+            <p>No matter how far apart life takes us...</p>
+            <p class="secret__punch">You can't get rid of me.</p>
+            <p aria-hidden="true">😂❤️</p>
+            <p class="secret__close">Happy Raksha Bandhan, Sis.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button type="button" class="lightbox__close" id="lightbox-close" aria-label="Close">&times;</button>
+    <button type="button" class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" aria-label="Previous">‹</button>
+    <figure class="lightbox__figure">
+      <img src="" alt="" id="lightbox-image" />
+      <figcaption id="lightbox-caption"></figcaption>
+    </figure>
+    <button type="button" class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="Next">›</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

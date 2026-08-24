@@ -1,0 +1,11 @@
+{
+  "name": "raksha-bandhan-gift",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Raksha Bandhan gift website — static production build for GitHub Pages",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "preview": "node preview.mjs"
+  }
+}
