@@ -54,6 +54,83 @@ button {
 
 [hidden] { display: none !important; }
 
+/* ---------- Soft sky sprinkle (CSS-only, never blocks UI) ---------- */
+.sky-sprinkle {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sky-sprinkle__bit {
+  position: absolute;
+  top: -12%;
+  left: var(--x, 50%);
+  width: var(--size, 0.5rem);
+  height: var(--size, 0.5rem);
+  opacity: 0;
+  animation: sky-fall var(--d, 16s) linear var(--delay, 0s) infinite;
+  will-change: transform, opacity;
+}
+
+.sky-sprinkle__bit--star {
+  background: var(--gold-soft);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  box-shadow: 0 0 6px rgba(242, 210, 122, 0.35);
+  opacity: 0;
+}
+
+.sky-sprinkle__bit--moon {
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: inset calc(var(--size, 0.6rem) * -0.28) calc(var(--size, 0.6rem) * -0.12) 0 0 rgba(242, 210, 122, 0.55);
+}
+
+.sky-sprinkle__bit--rakhi {
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, #fff3c4, #d4a017 55%, #8b5a12);
+  box-shadow: 0 0 0 1px rgba(242, 210, 122, 0.35);
+}
+
+.sky-sprinkle__bit--rakhi::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 95%;
+  width: 1px;
+  height: 140%;
+  transform: translateX(-50%);
+  background: linear-gradient(var(--gold-soft), rgba(212, 175, 55, 0.15));
+  opacity: 0.7;
+}
+
+@keyframes sky-fall {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.35;
+  }
+  70% {
+    opacity: 0.28;
+  }
+  100% {
+    transform: translate3d(var(--drift, 10px), 115vh, 0) rotate(220deg);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sky-sprinkle { display: none !important; }
+}
+
+@media (max-width: 699px) {
+  .sky-sprinkle__bit:nth-child(n + 13) { display: none; }
+}
+
 .skip-link {
   position: absolute;
   left: -999px;
@@ -281,8 +358,9 @@ button {
   width: 100%;
   min-height: 100dvh;
   min-height: 100svh;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 /* Full scene — Krishna left, Draupadi right, empty center. Never crop characters. */
@@ -314,10 +392,9 @@ button {
   width: 100%;
   height: 100%;
   max-width: 100%;
-  max-height: 100dvh;
+  max-height: 100%;
   object-fit: contain;
-  object-position: center bottom;
-  /* CRITICAL: contain = full Krishna + Draupadi, no crop */
+  object-position: center center;
 }
 
 @keyframes divine-breathe {
@@ -346,14 +423,15 @@ button {
   position: relative;
   z-index: 4;
   width: min(92vw, 420px);
-  padding: 1.25rem 1rem calc(1.5rem + var(--safe-b));
+  padding: 1rem 1rem calc(1.35rem + var(--safe-b));
+  margin-bottom: max(0.5rem, 2vh);
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Soft veil so text stays readable over the scene without covering characters */
+  /* Keep text in the lower empty zone so faces stay clear */
   background:
-    radial-gradient(ellipse at center, rgba(5, 10, 28, 0.72) 0%, rgba(5, 10, 28, 0.35) 55%, transparent 78%);
+    linear-gradient(180deg, transparent 0%, rgba(5, 10, 28, 0.55) 18%, rgba(5, 10, 28, 0.88) 100%);
   border-radius: 24px;
 }
 
@@ -456,24 +534,34 @@ button {
   to { opacity: 0; visibility: hidden; }
 }
 
-/* Desktop: keep characters large on sides, text floats in empty center */
+/* Desktop: full scene visible (faces + full figures); text sits lower */
 @media (min-width: 900px) {
   .opening__scene-img {
+    object-fit: contain;
     object-position: center center;
-    max-height: 100dvh;
-    width: auto;
-    max-width: 100%;
+    width: 100%;
     height: 100%;
+    max-width: 100%;
+    max-height: 100%;
   }
 
   .opening__center {
-    width: min(36vw, 440px);
+    width: min(34vw, 400px);
+    margin-bottom: max(1.5rem, 5vh);
     background:
-      radial-gradient(ellipse at center, rgba(5, 10, 28, 0.55) 0%, rgba(5, 10, 28, 0.2) 60%, transparent 80%);
+      linear-gradient(180deg, transparent 0%, rgba(5, 10, 28, 0.45) 22%, rgba(5, 10, 28, 0.86) 100%);
+  }
+
+  .opening__line--title {
+    font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  }
+
+  .opening__line--name {
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
   }
 }
 
-/* Mobile: scene full + readable center stack */
+/* Mobile: full scene visible; text sits over the lower area */
 @media (max-width: 699px) {
   .opening__stage {
     display: flex;
@@ -483,11 +571,12 @@ button {
   }
 
   .opening__scene {
-    inset: 0 0 28% 0;
+    inset: 0;
   }
 
   .opening__scene-img {
-    object-position: center top;
+    object-fit: contain;
+    object-position: center center;
   }
 
   .opening__center {

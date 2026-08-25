@@ -14,6 +14,28 @@
 <body>
   <a class="skip-link" href="#main-story">Skip to story</a>
 
+  <!-- Soft CSS-only sprinkle — never captures clicks -->
+  <div class="sky-sprinkle" aria-hidden="true">
+    <span class="sky-sprinkle__bit sky-sprinkle__bit--star" style="--x:8%; --d:14s; --delay:0s; --size:0.55rem; --drift:12px;"></span>
+    <span class="sky-sprinkle__bit sky-sprinkle__bit--moon" style="--x:18%; --d:18s; --delay:3s; --size:0.7rem; --drift:-10px;"></span>
+    <span class="sky-sprinkle__bit sky-sprinkle__bit--rakhi" style="--x:27%; --d:16s; --delay:1.2s; --size:0.45rem; --drift:8px;"></span>
+    <span class="sky-sprinkle__bit sky-sprinkle__bit--star" style="--x:36%; --d:12s; --delay:5s; --size:0.4rem; --drift:-14px;"></span>
+    <span class="sky-sprinkle__bit sky-sprinkle__bit--rakhi" style="--x:45%; --d:20s; --delay:2s; --size:0.5rem; --drift:6px;"></span>
+    <span class="sky-sprinkle__bit sky-sprinkle__bit--moon" style="--x:54%; --d:15s; --delay:7s; --size:0.65rem; --drift:-8px;"></span>
+    <span class="sky-sprinkle__bit sky-sprinkle__bit--star" style="--x:62%; --d:13s; --delay:1s; --size:0.5rem; --drift:16px;"></span>
+    <span class="sky-sprinkle__bit sky-sprinkle__bit--rakhi" style="--x:71%; --d:17s; --delay:4.5s; --size:0.42rem; --drift:-12px;"></span>
+    <span class="sky-sprinkle__bit sky-sprinkle__bit--star" style="--x:79%; --d:19s; --delay:0.8s; --size:0.45rem; --drift:9px;"></span>
+    <span class="sky-sprinkle__bit sky-sprinkle__bit--moon" style="--x:88%; --d:14s; --delay:6s; --size:0.6rem; --drift:-6px;"></span>
+    <span class="sky-sprinkle__bit sky-sprinkle__bit--rakhi" style="--x:12%; --d:21s; --delay:8s; --size:0.48rem; --drift:11px;"></span>
+    <span class="sky-sprinkle__bit sky-sprinkle__bit--star" style="--x:41%; --d:16s; --delay:9s; --size:0.38rem; --drift:-15px;"></span>
+    <span class="sky-sprinkle__bit sky-sprinkle__bit--rakhi" style="--x:58%; --d:22s; --delay:3.5s; --size:0.44rem; --drift:7px;"></span>
+    <span class="sky-sprinkle__bit sky-sprinkle__bit--moon" style="--x:74%; --d:18s; --delay:10s; --size:0.55rem; --drift:-9px;"></span>
+    <span class="sky-sprinkle__bit sky-sprinkle__bit--star" style="--x:93%; --d:15s; --delay:2.5s; --size:0.42rem; --drift:13px;"></span>
+    <span class="sky-sprinkle__bit sky-sprinkle__bit--rakhi" style="--x:22%; --d:19s; --delay:11s; --size:0.4rem; --drift:-7px;"></span>
+    <span class="sky-sprinkle__bit sky-sprinkle__bit--star" style="--x:67%; --d:13s; --delay:4s; --size:0.48rem; --drift:10px;"></span>
+    <span class="sky-sprinkle__bit sky-sprinkle__bit--moon" style="--x:5%; --d:17s; --delay:12s; --size:0.58rem; --drift:-11px;"></span>
+  </div>
+
   <button type="button" id="music-toggle" class="music-toggle" aria-label="Toggle music" hidden>
     <span aria-hidden="true">♪</span>
   </button>
@@ -38,7 +60,7 @@
       <div class="opening__scene" id="opening-scene" aria-hidden="true">
         <img
           class="opening__scene-img"
-          src="assets/divine/opening-scene.png"
+          src="assets/divine/opening-scene.png?v=20260825c"
           alt=""
           decoding="async"
         />
@@ -80,7 +102,7 @@
         <h2 class="chapter__title reveal">A Bond Written in Time</h2>
 
         <figure class="myth-art reveal" data-media="divine-story">
-          <img src="assets/divine/krishna-draupadi.png" alt="Krishna and Draupadi" loading="lazy" />
+          <img src="assets/divine/krishna-draupadi.png?v=20260825c" alt="Krishna and Draupadi" loading="lazy" />
         </figure>
 
         <div class="story-lines">
@@ -271,7 +293,7 @@
       <canvas class="sky-canvas" id="finale-stars" aria-hidden="true"></canvas>
       <div class="golden-dust" id="finale-dust" aria-hidden="true"></div>
       <div class="finale-divine" aria-hidden="true">
-        <img src="assets/divine/krishna-draupadi.png" alt="" loading="lazy" />
+        <img src="assets/divine/krishna-draupadi.png?v=20260825c" alt="" loading="lazy" />
       </div>
 
       <div class="chapter__inner chapter__inner--finale">
@@ -305,7 +327,7 @@
             <p>No matter how far apart life takes us...</p>
             <p class="secret__punch">You can't get rid of me.</p>
             <p aria-hidden="true">😂❤️</p>
-            <p class="secret__close">Happy Raksha Bandhan, Sis.</p>
+            <p class="secret__close">Happy Raksha Bandhan, Chittu ❤️</p>
           </div>
         </div>
       </div>

@@ -8,6 +8,9 @@ const storyConfig = {
   sisterNickname: "Chittu",
   brotherName: "Subash Sekar",
 
+  /* Bump this when you replace images/videos/audio so browsers load the new files */
+  assetVersion: "20260825c",
+
   divineImage: "assets/divine/krishna-draupadi.png",
 
   bridgePhoto: "assets/memories/memory-02.jpg",
@@ -161,6 +164,44 @@ Happy Raksha Bandhan ❤️
 
 — [YOUR_NAME]`,
 };
+
+function assetUrl(path) {
+  if (!path) return path;
+  const version = storyConfig.assetVersion || "1";
+  return `${path}${path.includes("?") ? "&" : "?"}v=${encodeURIComponent(version)}`;
+}
+
+function applyAssetVersions() {
+  storyConfig.divineImage = assetUrl(storyConfig.divineImage);
+  storyConfig.bridgePhoto = assetUrl(storyConfig.bridgePhoto);
+  storyConfig.connectionUsPhoto = assetUrl(storyConfig.connectionUsPhoto);
+  storyConfig.finalePhoto = assetUrl(storyConfig.finalePhoto);
+  storyConfig.finaleMainVideo = assetUrl(storyConfig.finaleMainVideo);
+  storyConfig.finalVideo = assetUrl(storyConfig.finalVideo);
+  storyConfig.backgroundMusic = assetUrl(storyConfig.backgroundMusic);
+  storyConfig.divineFlute = assetUrl(storyConfig.divineFlute);
+  storyConfig.finalePhotos = (storyConfig.finalePhotos || []).map(assetUrl);
+  storyConfig.childhood = (storyConfig.childhood || []).map((item) => ({
+    ...item,
+    src: assetUrl(item.src),
+  }));
+  storyConfig.timeline = (storyConfig.timeline || []).map((item) => ({
+    ...item,
+    src: assetUrl(item.src),
+  }));
+  storyConfig.funny = (storyConfig.funny || []).map((item) => ({
+    ...item,
+    src: assetUrl(item.src),
+  }));
+  storyConfig.memories = (storyConfig.memories || []).map((item) => ({
+    ...item,
+    src: assetUrl(item.src),
+  }));
+  storyConfig.storyVideos = (storyConfig.storyVideos || []).map((item) => ({
+    ...item,
+    src: assetUrl(item.src),
+  }));
+}
 
 const CHAPTERS = [
   { id: "ch-divine", label: "01 Divine Bond" },
@@ -459,6 +500,28 @@ const Music = (() => {
 
   return { init, play, pause, toggle, isReady: () => ready };
 })();
+
+/* ---------- Exclusive video playback ---------- */
+function pauseAllVideosExcept(active) {
+  $$("video").forEach((video) => {
+    if (video !== active && !video.paused) {
+      video.pause();
+    }
+  });
+}
+
+function setupExclusiveMedia() {
+  document.addEventListener(
+    "play",
+    (event) => {
+      const el = event.target;
+      if (!(el instanceof HTMLVideoElement)) return;
+      pauseAllVideosExcept(el);
+      Music.pause();
+    },
+    true
+  );
+}
 
 /* ---------- Builders ---------- */
 async function buildChildhood() {
@@ -1090,11 +1153,13 @@ function replayStory() {
 
 /* ---------- Init ---------- */
 async function init() {
+  applyAssetVersions();
   personalize();
   buildLetter();
   buildChapterNav();
   setupLightbox();
   setupSecret();
+  setupExclusiveMedia();
   createDust($("#opening-dust"), 32);
   startStarCanvas($("#opening-stars"), { count: 80, speed: 0.2 });
 
